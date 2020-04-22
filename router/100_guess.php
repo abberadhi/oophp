@@ -8,6 +8,7 @@
  */
 $app->router->get("guess/init", function () use ($app) {
     // init session for gmae start
+    session_destroy();
     $a = new Abbe\Guess\Guess();
     $_SESSION["game"] = serialize($a);
     return $app->response->redirect("guess/play");
@@ -26,7 +27,6 @@ $app->router->get("guess/play", function () use ($app) {
     if (!isset($_SESSION["game"])) {
         // set new game
         $a = new Abbe\Guess\Guess();
-        $_SESSION["cheat"] = $game->number();
         $_SESSION["game"] = serialize($a);
     }
     // unserialize game
