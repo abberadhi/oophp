@@ -59,5 +59,10 @@ return [
             "url" => "dev",
             "title" => "Anax development utilities",
         ],
+        [
+            "text" => "Guess",
+            "url" => "guess-game",
+            "title" => "Gissa nummer spelet",
+        ],
     ],
 ];
