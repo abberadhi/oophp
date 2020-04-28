@@ -33,5 +33,10 @@ return [
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
         ],
+        [
+            "text" => "Dice100",
+            "url" => "dice100/init",
+            "title" => "Dice100 spelet.",
+        ],
     ],
 ];
