@@ -15,7 +15,7 @@ if (isset($class)) {
     $classes[] = $class;
 }
 
-?><h1>Guess my number</h1>
+?><h1>Guess my number 2</h1>
 <article <?= classList($classes) ?>>
 <form method="post">
     <label>Your name:<br>

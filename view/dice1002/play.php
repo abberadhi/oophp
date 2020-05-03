@@ -75,6 +75,7 @@ if (isset($class)) {
     <?php endif; ?>
     <input type="submit" name="reset" value="Reset">
     </form>
-    
+    <?= $histogram ?>
+    <?= var_dump($serie) ?>
 </article>
 </html>

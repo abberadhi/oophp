@@ -1,8 +1,8 @@
 <?php
 
-namespace Abbe\Dice100;
+namespace Abbe\Dice1002;
 
-use Abbe\Dice100;
+use Abbe\Dice1002;
 
 class Player
 {
@@ -10,11 +10,13 @@ class Player
     private $totalPoints = 0;
     private $currentPoints = 0;
     private $dices = [];
+    public $serie;
 
     public function __construct($human, string $name = "Player")
     {
         $this->name = $name;
         $this->human = $human;
+        $this->serie = new DiceHistogram2();
     }
 
     public function increaseTotalPoints()
@@ -51,9 +53,9 @@ class Player
     {
         $this->dices = [];
         for ($curr = 0; $curr < $times; $curr++) {
-            $newDice = new Dice();
-            $this->dices[] = $newDice->getNumber();
-            $this->currentPoints += $newDice->getNumber();
+            $newNumber = $this->serie->roll();
+            $this->dices[] = $newNumber;
+            $this->currentPoints += $newNumber;
         }
     }
 

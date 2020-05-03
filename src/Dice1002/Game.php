@@ -1,11 +1,14 @@
 <?php
 
-namespace Abbe\Dice100;
+namespace Abbe\Dice1002;
 
-use Abbe\Dice100;
+use Abbe\Dice1002;
 
-class Game
+class Game implements IntelligenceInterface
 {
+
+    use IntelligenceTrait;
+
     public $numberOfDice;
     public $players = [];
 
@@ -30,14 +33,12 @@ class Game
         $this->players[$index]->setCurrentPoints(0);
     }
 
-    public function botRoll(int $player, int $times)
+    public function botRoll(int $player)
     {
-        for ($j = 0; $j < $times; $j++) {
-            $this->players[$player]->rollDices($this->numberOfDice);
+        $this->players[$player]->rollDices($this->numberOfDice);
 
-            if (in_array(1, $this->players[$player]->getDices())) {
-                return true;
-            }
+        if (in_array(1, $this->players[$player]->getDices())) {
+            return true;
         }
     }
 
@@ -45,8 +46,15 @@ class Game
     {
         $this->players[0]->increaseTotalPoints();
         for ($i = 1; $i < count($this->players); $i++) {
-            $times = rand(1, 4);
-            $oneFound = $this->botRoll($i, $times);
+            $oneFound = $this->botRoll($i);
+            while (!$oneFound) {
+                if ($this->calculateOdds($i)) {
+                    $oneFound = $this->botRoll($i);
+                } else {
+                    break;
+                }
+            }
+
 
             if (!$oneFound) {
                 $this->players[$i]->increaseTotalPoints();
@@ -68,9 +76,20 @@ class Game
         if (in_array(1, $this->players[0]->getDices())) {
             $this->players[0]->setCurrentPoints(0);
         }
-
+        
         if ($this->players[0]->winner()) {
             return $this->players[0]->name;
         }
+    }
+
+    public function histogram()
+    {
+        $tempSerie = [];
+
+        for ($i = 0; $i < count($this->players); $i++) {
+            $tempSerie = array_merge($tempSerie, $this->players[$i]->serie->serie);
+        }
+
+        return $this->players[0]->serie->printHistogram($tempSerie);
     }
 }
