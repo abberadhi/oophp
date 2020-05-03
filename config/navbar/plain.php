@@ -38,5 +38,10 @@ return [
             "url" => "dice100/init",
             "title" => "Dice100 spelet.",
         ],
+        [
+            "text" => "Dice1002",
+            "url" => "dice1002/init",
+            "title" => "Dice1002 spelet.",
+        ],
     ],
 ];

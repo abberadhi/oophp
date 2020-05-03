@@ -31,6 +31,16 @@ return [
                         "url" => "redovisning/kmom02",
                         "title" => "Redovisning för kmom02.",
                     ],
+                    [
+                        "text" => "Kmom03",
+                        "url" => "redovisning/kmom03",
+                        "title" => "Redovisning för kmom03.",
+                    ],
+                    [
+                        "text" => "Kmom04",
+                        "url" => "redovisning/kmom04",
+                        "title" => "Redovisning för kmom04.",
+                    ],
                 ],
             ],
         ],
@@ -68,6 +78,11 @@ return [
             "text" => "Dice100",
             "url" => "dice100/init",
             "title" => "Dice100 spelet.",
+        ],
+        [
+            "text" => "Dice1002",
+            "url" => "dice1002/init",
+            "title" => "Dice1002 spelet.",
         ],
     ],
 ];
