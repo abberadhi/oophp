@@ -94,5 +94,15 @@ return [
             "url" => "movie",
             "title" => "movies.",
         ],
+        [
+            "text" => "Testing Text filter",
+            "url" => "textfilter",
+            "title" => "Test-TextFilter",
+        ],
+        [
+            "text" => "content",
+            "url" => "content",
+            "title" => "Content",
+        ],
     ],
 ];
